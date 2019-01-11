@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(src='/javascripts/filter.js')
+		script(src="/javascripts/jquery.min.js")
+		script(src='/javascripts/jquery.js')
+		script(src='/javascripts/google-login.js')
+		meta(name="google-signin-scope" content="profile email")
+		meta(name="google-signin-client_id" content="1056929103029-2hm2370o3rg26olnisvvk27l7d13ar56.apps.googleusercontent.com")
+		script(src="https://apis.google.com/js/platform.js" async defer)
+
+	body
+		block content

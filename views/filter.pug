@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	a(href="http://localhost:3000/task") Back to Task List
+
+	h1 Task Management System: Filter List
+
+	table(id='myTable')
+		tr(class='header')
+			td 
+				strong Title
+			td 
+				strong Content
+			td 
+				strong Deadline
+			td 
+				strong Owner
+			td 
+				strong Complete
+			td 
+				strong ID
+
+		each x in data
+			tr(class="rows")
+				td #{x.title}
+				td #{x.content}
+				td #{x.deadline}
+				td #{x.owner}
+				td #{x.complete}
+				td #{x._id}
+
+	br

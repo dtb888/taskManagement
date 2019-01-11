@@ -1,0 +1,29 @@
+extends layout
+
+
+block content
+	h1 Task Management System
+	p Designed by Darryl Berry
+
+	br
+
+	a(href="http://localhost:3000/task") Go to Task List
+
+	br
+	br
+
+	div(class="g-signin2" data-onsuccess="onSignIn" data-theme="dark")
+
+	br  
+
+	a(href="#" id="signOut") Sign out
+
+	br
+	br
+
+	span
+		strong Welcome: 
+	span(id="givenName")
+
+
+	script document.getElementById('signOut').addEventListener("click", signOut)
