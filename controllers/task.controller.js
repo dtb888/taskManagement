@@ -16,7 +16,6 @@ exports.create = function(req, res) {
 			res.status(500).send({message: 'Some error occurred while creating the Task.'});
 		} else {
 			console.log('Task Saved');
-			res.send('Task Saved <br><br><a href="http://localhost:3000/task">Back Home</a>')
 		}
 	});
 };
@@ -43,8 +42,16 @@ exports.findOne = function(req, res) {
 	});
 };
 
+
+exports.edit = function(req, res) {
+	let id = req.params.id;
+	Task.findById(id, function (err, task){
+		res.json(task)
+	})
+}
+
 exports.update = function(req, res) {
-	let query = {title: req.body.content}
+	let query = {title: req.body.title}
 	Task.updateOne(query, {title: req.body.title, content: req.body.content, deadline: req.body.deadline, owner: req.body.owner, complete: req.body.complete}, function(err, task) {
 		if (err) {
 			res.status(500).send({message: 'Some error occurred while updating task.'});
@@ -55,14 +62,14 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-	let query = {title: req.body.content}
-	Task.deleteOne(query, function(err, task) {
+	let id = req.params.id;
+	Task.deleteOne({_id: id}, function(err) {
 		if (err) {
 			res.status(500).send({message: 'Some error occurred while deleting task.'});
 		} else {
 			res.send('Task deleted');
 		}
-	});
+	})
 };
 
 

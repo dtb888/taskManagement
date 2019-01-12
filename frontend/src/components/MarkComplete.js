@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class Create extends Component {
+export default class MarkComplete extends Component {
   constructor(props) {
       super(props);
       this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -21,6 +21,23 @@ export default class Create extends Component {
           complete: ''
       }
   }
+
+ componentDidMount() {
+    axios.get('/edit/'+this.props.match.params.id)
+        .then(response => {
+            this.setState({ 
+              title: response.data.title, 
+              content: response.data.content,
+              deadline: response.data.deadline,
+              owner: response.data.owner,
+              createdBy: response.data.createdBy,
+              complete: response.data.complete });
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+  }
+
   onChangeTitle(e) {
     this.setState({
       title: e.target.value
@@ -64,27 +81,20 @@ export default class Create extends Component {
       complete: this.state.complete
     };
 
-    axios.post('/create', obj)
-        .then(res => console.log(res.data))
-        .then(window.location.reload())
+    axios.post('/edit/'+this.props.match.params.id, obj)
+        .then(res => console.log(res.data));
+
+    this.props.history.push('/task');
 
     console.log(`The values are ${this.state.title}, ${this.state.content}, ${this.state.deadline}, ${this.state.owner}, ${this.state.createdBy}, and ${this.state.complete}`)
     
-    this.setState({
-      title: '',
-      content: '',
-      deadline:'',
-      owner: '',
-      createdBy: '',
-      complete: ''
-    })
   }
  
 
   render() {
       return (
           <div style={{ marginTop: 10 }}>
-              <h3>Create New Task</h3>
+              <h3>Mark Task Complete</h3>
               <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                       <label>Title:  </label>
@@ -104,30 +114,6 @@ export default class Create extends Component {
                         />
                   </div>
                   <div className="form-group">
-                      <label>Deadline: </label>
-                      <input type="text" 
-                        className="form-control"
-                        value={this.state.deadline}
-                        onChange={this.onChangeDeadline}
-                        />
-                  </div>
-                  <div className="form-group">
-                      <label>Owner: </label>
-                      <input type="text" 
-                        className="form-control"
-                        value={this.state.owner}
-                        onChange={this.onChangeOwner}
-                        />
-                  </div>
-                  <div className="form-group">
-                      <label>Created By: </label>
-                      <input type="text" 
-                        className="form-control"
-                        value={this.state.createdBy}
-                        onChange={this.onChangeCreatedBy}
-                        />
-                  </div>
-                  <div className="form-group">
                       <label>Complete: </label>
                       <input type="text" 
                         className="form-control"
@@ -135,8 +121,9 @@ export default class Create extends Component {
                         onChange={this.onChangeComplete}
                         />
                   </div>
+                  
                   <div className="form-group">
-                      <input type="submit" value="Create Task" className="btn btn-primary"/>
+                      <input type="submit" value="Mark Complete" className="btn btn-primary"/>
                   </div>
               </form>
           </div>
