@@ -83,7 +83,7 @@ export default class Assign extends Component {
 
     axios.post('/edit/'+this.props.match.params.id, obj)
         .then(res => console.log(res.data))
-        .then(window.location.reload())
+        .then(window.location.reload());
 
     this.props.history.push('/task');
 

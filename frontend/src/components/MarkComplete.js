@@ -82,7 +82,8 @@ export default class MarkComplete extends Component {
     };
 
     axios.post('/edit/'+this.props.match.params.id, obj)
-        .then(res => console.log(res.data));
+        .then(res => console.log(res.data))
+        .then(window.location.reload());
 
     this.props.history.push('/task');
 
@@ -94,7 +95,7 @@ export default class MarkComplete extends Component {
   render() {
       return (
           <div style={{ marginTop: 10 }}>
-              <h3>Mark Task Complete</h3>
+              <h3>Mark Task Complete?</h3>
               <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                       <label>Title:  </label>
@@ -123,7 +124,7 @@ export default class MarkComplete extends Component {
                   </div>
                   
                   <div className="form-group">
-                      <input type="submit" value="Mark Complete" className="btn btn-primary"/>
+                      <input type="submit" value="Confirm Complete" className="btn btn-primary"/>
                   </div>
               </form>
           </div>

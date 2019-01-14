@@ -1,7 +1,7 @@
 const Task = require('../models/task.model.js');
 const TokenSignin = require('../models/tokensignin.model.js');
 const mongoose = require('mongoose');
-var session = require('express-session')
+const session = require('express-session')
 
 exports.create = function(req, res) {
 	if (!req.body.content){
@@ -21,7 +21,8 @@ exports.create = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
-	Task.find(function(err, tasks) {
+	query = {createdBy: req.session.userName}
+	Task.find(query, function(err, tasks) {
 		if (err) {
 			res.status(500).send({message: 'Some error occurred while retrieving tasks.'});
 		} else {
@@ -72,6 +73,53 @@ exports.delete = function(req, res) {
 	})
 };
 
+exports.findCompletedTasks = function(req, res) {     // Retrieve and return all completed tasks from the database.
+			let query = {complete: "Yes", createdBy: req.session.userName};
+      Task.find(query, function (err, tasks) {
+          if (err) {
+              res.status(500).send({message: "Some error occurred while retrieving completed tasks."});
+          } else {
+              res.send(tasks);
+          }
+      });
+
+};
+
+exports.findUncompletedTasks = function(req, res) {     // Retrieve and return all completed tasks from the database.
+			let query = {complete: "No", createdBy: req.session.userName};
+      Task.find(query, function (err, tasks) {
+          if (err) {
+              res.status(500).send({message: "Some error occurred while retrieving completed tasks."});
+          } else {
+              res.send(tasks);
+          }
+      });
+
+};
+
+exports.findDeadlineTasks = function(req, res) {     // Retrieve and return all completed tasks from the database.
+			let query = {deadline: { $gte : Date()}, createdBy: req.session.userName };
+      Task.find(query, function (err, tasks) {
+          if (err) {
+              res.status(500).send({message: "Some error occurred while retrieving completed tasks."});
+          } else {
+              res.send(tasks);
+          }
+      });
+
+};
+
+exports.findOverdueTasks = function(req, res) {     // Retrieve and return all completed tasks from the database.
+			let query = {deadline: { $lte : Date()}, createdBy: req.session.userName };
+      Task.find(query, function (err, tasks) {
+          if (err) {
+              res.status(500).send({message: "Some error occurred while retrieving completed tasks."});
+          } else {
+              res.send(tasks);
+          }
+      });
+
+};
 
 exports.createToken = function(req, res) {
 	if (!req.body.idtoken){

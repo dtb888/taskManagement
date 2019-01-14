@@ -22,6 +22,7 @@ function onSignIn(googleUser) {
 	xhr.send('idtoken=' + id_token);
 	
 	document.getElementById("givenName").innerHTML = profile.getGivenName()
+
 };
 
 function signOut() {

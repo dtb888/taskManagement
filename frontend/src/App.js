@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import './App.css';
 
+import AllTasks from './components/AllTasks';
 import Create from './components/CreateTask';
 import Edit from './components/EditTask';
 import Delete from './components/DeleteTask';
 import Assign from './components/AssignTask';
-import Complete from './components/MarkComplete'
+import Complete from './components/MarkComplete';
+import Completed from './components/CompletedTasks';
+import Uncompleted from './components/UncompletedTasks';
+import Deadline from './components/DeadlineTasks';
+import Overdue from './components/OverdueTasks';
+
 import TableRow from './components/TableRow';
 
 class App extends Component {
@@ -18,16 +23,6 @@ class App extends Component {
   constructor(props) {
       super(props);
       this.state = {tasks: []}
-  }
-
-  componentDidMount(){
-      axios.get('/task')
-        .then(response => {
-          this.setState({ tasks: response.data });
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
   }
 
   tabRow(){
@@ -39,8 +34,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
 
+      <div className="App">
         <header>
           <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
           <span> <strong> Welcome: </strong> </span> <span id="givenName"></span>
@@ -64,51 +59,31 @@ class App extends Component {
               </div>
             </nav> <br/>
             <Switch>
+                <Route exact path='/' component={ AllTasks} />
                 <Route exact path='/create' component={ Create } />
                 <Route path='/edit/:id' component={ Edit } />
                 <Route path='/delete/:id' component= { Delete } />
                 <Route path='/assign/:id' component={ Assign } />
                 <Route path='/complete/:id' component={ Complete } />
+                <Route exact path='/completed' component={ Completed } />
+                <Route exact path='/uncompleted' component={ Uncompleted } />
+                <Route exact path='/deadline' component={ Deadline } />
+                <Route exact path='/overdue' component={ Overdue } />
             </Switch>
           
-            <div className="taskList">
-              <h1>Task List</h1>
-                <table class="" id="myTable">
-                  <thead>
-                    <tr className="tableHeader">
-                      <td>Title</td>
-                      <td>Content</td><td>Deadline</td>
-                      <td>Owner</td><td>Created By</td>
-                      <td>Complete</td>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {this.tabRow()}
-                  </tbody>
-                </table>
-            </div>
           </div>
         </Router>
 
 
-          <br/><br/>
+          <br/>
 
-          <p> Filter tasks by:</p>
-
-          <a href="#" id="all">All</a>
-          <span>    </span>
-          <a href="#" id="completed">Completed Tasks</a>
-          <span>    </span>
-          <a href="#" id="uncompleted">Uncompleted Tasks</a>
-          <span>    </span>
-          <span>Deadline Filter:  </span> 
-          <input type="input" id="deadlineText" onkeyup="filterDeadline()" placeholder="ccyy-MM-dd"/>
-          <span>    </span>
-          <a href="#" id="overdue">Overdue</a>
-          <span>    </span>
-          <a href="#" id="completedLastMonth">Completed within the Last Month</a>
-
+          <div className='navbar-collapse'>
+            <a href="/" id="all" className='btn btn-dark' style={{margin: 1 +'em'}}>All</a>
+            <a href="/completed" id="completed" className='btn btn-dark' style={{margin: 1 +'em'}}>Completed Tasks</a>
+            <a href="/uncompleted" id="uncompleted" className='btn btn-dark' style={{margin: 1 +'em'}}>Uncompleted Tasks</a>
+            <a href="/deadline" id="deadline" className='btn btn-dark' style={{margin: 1 +'em'}}>Deadline</a>
+            <a href="/overdue" id="overdue" className='btn btn-dark' style={{margin: 1 +'em'}}>Overdue</a>
+          </div>
 
         </main>
 

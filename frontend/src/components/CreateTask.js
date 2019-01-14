@@ -120,22 +120,6 @@ export default class Create extends Component {
                         />
                   </div>
                   <div className="form-group">
-                      <label>Created By: </label>
-                      <input type="text" 
-                        className="form-control"
-                        value={this.state.createdBy}
-                        onChange={this.onChangeCreatedBy}
-                        />
-                  </div>
-                  <div className="form-group">
-                      <label>Complete: </label>
-                      <input type="text" 
-                        className="form-control"
-                        value={this.state.complete}
-                        onChange={this.onChangeComplete}
-                        />
-                  </div>
-                  <div className="form-group">
                       <input type="submit" value="Create Task" className="btn btn-primary"/>
                   </div>
               </form>
