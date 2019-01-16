@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="App"
+>
+  <header>
+    <div
+      className="g-signin2"
+      data-onsuccess="onSignIn"
+      data-theme="dark"
+    />
+    <span>
+       
+      <strong>
+         Welcome: 
+      </strong>
+       
+    </span>
+     
+    <span
+      id="givenName"
+    />
+  </header>
+  <main>
+    <div
+      className="container"
+    >
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-light"
+      >
+        <a
+          className="navbar-brand"
+          href="/"
+          onClick={[Function]}
+        >
+          Task Management App
+        </a>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarSupportedContent"
+        >
+          <ul
+            className="navbar-nav mr-auto"
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/"
+                onClick={[Function]}
+              >
+                Home
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/create"
+                onClick={[Function]}
+              >
+                Create New Task
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+       
+      <br />
+      <div
+        className="table table-sm"
+      >
+        <h1>
+          Task List
+        </h1>
+        <table
+          className=""
+          id="myTable"
+        >
+          <thead>
+            <tr
+              className="tableHeader"
+            >
+              <td>
+                Title
+              </td>
+              <td>
+                Content
+              </td>
+              <td>
+                Deadline
+              </td>
+              <td>
+                Owner
+              </td>
+              <td>
+                Created By
+              </td>
+              <td>
+                Complete
+              </td>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+    <br />
+    <div
+      className="navbar-collapse"
+    >
+      <a
+        className="btn btn-dark"
+        href="/"
+        id="all"
+        style={
+          Object {
+            "margin": "1em",
+          }
+        }
+      >
+        All
+      </a>
+      <a
+        className="btn btn-dark"
+        href="/completed"
+        id="completed"
+        style={
+          Object {
+            "margin": "1em",
+          }
+        }
+      >
+        Completed Tasks
+      </a>
+      <a
+        className="btn btn-dark"
+        href="/uncompleted"
+        id="uncompleted"
+        style={
+          Object {
+            "margin": "1em",
+          }
+        }
+      >
+        Uncompleted Tasks
+      </a>
+      <a
+        className="btn btn-dark"
+        href="/deadline"
+        id="deadline"
+        style={
+          Object {
+            "margin": "1em",
+          }
+        }
+      >
+        Deadline
+      </a>
+      <a
+        className="btn btn-dark"
+        href="/overdue"
+        id="overdue"
+        style={
+          Object {
+            "margin": "1em",
+          }
+        }
+      >
+        Overdue
+      </a>
+    </div>
+  </main>
+</div>
+`;

@@ -37,8 +37,8 @@ class App extends Component {
 
       <div className="App">
         <header>
-          <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-          <span> <strong> Welcome: </strong> </span> <span id="givenName"></span>
+          <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+          <span> <strong> Welcome: </strong> </span> <span id="givenName" ></span>
         </header>
 
         <main>

@@ -1,7 +1,7 @@
 const Task = require('../models/task.model.js');
 const TokenSignin = require('../models/tokensignin.model.js');
 const mongoose = require('mongoose');
-const session = require('express-session')
+const session = require('express-session');
 
 exports.create = function(req, res) {
 	if (!req.body.content){
@@ -98,7 +98,7 @@ exports.findUncompletedTasks = function(req, res) {     // Retrieve and return a
 };
 
 exports.findDeadlineTasks = function(req, res) {     // Retrieve and return all completed tasks from the database.
-			let query = {deadline: { $gte : Date()}, createdBy: req.session.userName };
+			let query = {deadline: { $gte : Date()}, complete: "No", createdBy: req.session.userName };
       Task.find(query, function (err, tasks) {
           if (err) {
               res.status(500).send({message: "Some error occurred while retrieving completed tasks."});
@@ -110,7 +110,7 @@ exports.findDeadlineTasks = function(req, res) {     // Retrieve and return all 
 };
 
 exports.findOverdueTasks = function(req, res) {     // Retrieve and return all completed tasks from the database.
-			let query = {deadline: { $lte : Date()}, createdBy: req.session.userName };
+			let query = {deadline: { $lte : Date()}, complete: "No", createdBy: req.session.userName };
       Task.find(query, function (err, tasks) {
           if (err) {
               res.status(500).send({message: "Some error occurred while retrieving completed tasks."});
@@ -156,9 +156,9 @@ exports.createToken = function(req, res) {
 						console.log(err);
 						res.status(500).send({message: 'Some error occurred while creating the Token.'});
 					} else {
-						res.send(data.name)
+						req.session.userName = data.name
 						console.log('Token Saved');
-						req.session.userName = name
+						res.send(req.session.userName)
 						console.log(req.session.userName)
 					}
 				});
@@ -175,5 +175,4 @@ exports.createToken = function(req, res) {
 	}
 	verify().catch(console.error);
 
-	
 };
