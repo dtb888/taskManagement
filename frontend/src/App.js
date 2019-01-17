@@ -34,6 +34,7 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
         <header>
           <div
@@ -51,7 +52,7 @@ class App extends Component {
         </header>
 
         <main>
-          <Router>
+          
             <div className="container">
               <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link to="/" className="navbar-brand">
@@ -90,54 +91,55 @@ class App extends Component {
                 <Route exact path="/overdue" component={Overdue} />
               </Switch>
             </div>
-          </Router>
+          
 
           <br />
 
-          <div className="navbar-collapse">
-            <a
-              href="/"
-              id="all"
-              className="btn btn-dark"
-              style={{ margin: `${1}em` }}
-            >
-              All
-            </a>
-            <a
-              href="/completed"
-              id="completed"
-              className="btn btn-dark"
-              style={{ margin: `${1}em` }}
-            >
-              Completed Tasks
-            </a>
-            <a
-              href="/uncompleted"
-              id="uncompleted"
-              className="btn btn-dark"
-              style={{ margin: `${1}em` }}
-            >
-              Uncompleted Tasks
-            </a>
-            <a
-              href="/deadline"
-              id="deadline"
-              className="btn btn-dark"
-              style={{ margin: `${1}em` }}
-            >
-              Deadline
-            </a>
-            <a
-              href="/overdue"
-              id="overdue"
-              className="btn btn-dark"
-              style={{ margin: `${1}em` }}
-            >
-              Overdue
-            </a>
-          </div>
+            <div className="navbar-collapse">
+              <a
+                href="/"
+                id="all"
+                className="btn btn-dark"
+                style={{ margin: `${1}em` }}
+              >
+                All
+              </a>
+              <a
+                href="/completed"
+                id="completed"
+                className="btn btn-dark"
+                style={{ margin: `${1}em` }}
+              >
+                Completed Tasks
+              </a>
+              <a
+                href="/uncompleted"
+                id="uncompleted"
+                className="btn btn-dark"
+                style={{ margin: `${1}em` }}
+              >
+                Uncompleted Tasks
+              </a>
+              <a
+                href="/deadline"
+                id="deadline"
+                className="btn btn-dark"
+                style={{ margin: `${1}em` }}
+              >
+                Deadline
+              </a>
+              <a
+                href="/overdue"
+                id="overdue"
+                className="btn btn-dark"
+                style={{ margin: `${1}em` }}
+              >
+                Overdue
+              </a>
+            </div>
         </main>
       </div>
+      </Router>
     );
   }
 }
