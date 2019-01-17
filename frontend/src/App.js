@@ -96,46 +96,46 @@ class App extends Component {
           <br />
 
             <div className="navbar-collapse">
-              <a
-                href="/"
+              <Link 
+                to="/"
                 id="all"
                 className="btn btn-dark"
                 style={{ margin: `${1}em` }}
               >
                 All
-              </a>
-              <a
-                href="/completed"
+              </Link>
+              <Link
+                to="/completed"
                 id="completed"
                 className="btn btn-dark"
                 style={{ margin: `${1}em` }}
               >
                 Completed Tasks
-              </a>
-              <a
-                href="/uncompleted"
+              </Link>
+              <Link
+                to="/uncompleted"
                 id="uncompleted"
                 className="btn btn-dark"
                 style={{ margin: `${1}em` }}
               >
                 Uncompleted Tasks
-              </a>
-              <a
-                href="/deadline"
+              </Link>
+              <Link
+                to="/deadline"
                 id="deadline"
                 className="btn btn-dark"
                 style={{ margin: `${1}em` }}
               >
                 Deadline
-              </a>
-              <a
-                href="/overdue"
+              </Link>
+              <Link
+                to="/overdue"
                 id="overdue"
                 className="btn btn-dark"
                 style={{ margin: `${1}em` }}
               >
                 Overdue
-              </a>
+              </Link>
             </div>
         </main>
       </div>
