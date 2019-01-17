@@ -31,7 +31,16 @@ app.use(
   })
 )
 
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+  app.get('*',(req,res)=> {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build','index.html'));
+  });
+}
+
 require('./routes/task.js')(app)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
