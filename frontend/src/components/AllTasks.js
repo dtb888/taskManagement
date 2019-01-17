@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TableRow from './TableRow';
 import axios from 'axios';
 
-export default class CompletedTasks extends Component {
+export default class AllTasks extends Component {
   constructor(props) {
       super(props);
       this.state = {tasks: []}
