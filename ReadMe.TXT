@@ -4,3 +4,5 @@ The app is on a MERN stack and uses npm.
 
 To load the app go to the taskManagement folder in the terminal and run > npm start
 also load the taskManagement/frontend and run > npm start.
+
+Deployed on Heroku. https://afternoon-fjord-50473.herokuapp.com/
