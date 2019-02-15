@@ -17,8 +17,6 @@ import Uncompleted from './components/UncompletedTasks';
 import Deadline from './components/DeadlineTasks';
 import Overdue from './components/OverdueTasks';
 
-import TableRow from './components/TableRow';
-
 
 class App extends Component {
   constructor(props) {
@@ -26,22 +24,19 @@ class App extends Component {
     this.state = { tasks: [] };
   }
 
-  tabRow() {
-    return this.state.tasks.map((object, i) => (
-      <TableRow obj={object} key={i} />
-    ));
-  }
-
   render() {
     return (
       <Router>
       <div className="App">
-        <header>
           <div
             className="g-signin2"
             data-onsuccess="onSignIn"
             data-theme="dark"
-          />
+          > 
+          </div>
+          <button id="signOut" className="signOut btn btn-dark">Sign out</button>
+          <br/>
+         <header>
           <span>
             {' '}
             <strong> Welcome: </strong>

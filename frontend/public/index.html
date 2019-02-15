@@ -22,7 +22,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <script src='/javascripts/google-login.js'></script>
+    <script src='./google-login.js'></script>
     <meta name="google-signin-scope" content="profile email" />
     <meta name="google-signin-client_id" content="1056929103029-2hm2370o3rg26olnisvvk27l7d13ar56.apps.googleusercontent.com" />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -45,6 +45,8 @@
     
 
   </body>
-
+  <script>
+    document.getElementById("signOut").addEventListener("click", signOut);
+  </script>
 
 </html>

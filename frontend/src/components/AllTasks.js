@@ -19,7 +19,7 @@ export default class AllTasks extends Component {
   }
 
   tabRow(){
-      return this.state.tasks.map(function(object, i){
+      return this.state.tasks.map(function(object, i) {
           return <TableRow obj={object} key={i} />;
       });
   }
