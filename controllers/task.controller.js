@@ -30,7 +30,7 @@ exports.create = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
-  query = { createdBy: req.session.userName };
+  let query = { createdBy: req.session.userName };
   Task.find(query, function(err, tasks) {
     if (err) {
       res

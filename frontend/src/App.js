@@ -19,10 +19,7 @@ import Overdue from './components/OverdueTasks';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { tasks: [] };
-  }
+ 
 
   render() {
     return (

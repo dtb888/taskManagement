@@ -4,24 +4,24 @@ import axios from 'axios';
 
 export default class AllTasks extends Component {
   constructor(props) {
-      super(props);
-      this.state = {tasks: []}
+    super(props);
+    this.state = {tasks: []}
   }
 
   componentDidMount(){
-      axios.get('/task')
-        .then(response => {
-          this.setState({ tasks: response.data });
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
+    axios.get('/task')
+      .then(response => {
+        this.setState({ tasks: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   tabRow(){
-      return this.state.tasks.map(function(object, i) {
-          return <TableRow obj={object} key={i} />;
-      });
+    return this.state.tasks.map(function(object, i) {
+        return <TableRow obj={object} key={i} />;
+    });
   }
 
   render() {
