@@ -7,6 +7,7 @@ import {
 import './App.css';
 
 import AllTasks from './components/AllTasks';
+import SignOut from './components/SignOut';
 import Create from './components/CreateTask';
 import Edit from './components/EditTask';
 import Delete from './components/DeleteTask';
@@ -29,9 +30,11 @@ class App extends Component {
             className="g-signin2"
             data-onsuccess="onSignIn"
             data-theme="dark"
-          > 
+          >
+          <Link to="/">
+          </Link>
           </div>
-          <button id="signOut" className="signOut btn btn-dark">Sign out</button>
+          <Link to="/signout" id="signOut">Sign Out</Link>
           <br/>
          <header>
           <span>
@@ -72,6 +75,7 @@ class App extends Component {
               <br />
               <Switch>
                 <Route exact path="/" component={AllTasks} />
+                <Route exact path="/signout" component={SignOut} />
                 <Route exact path="/create" component={Create} />
                 <Route path="/edit/:id" component={Edit} />
                 <Route path="/delete/:id" component={Delete} />

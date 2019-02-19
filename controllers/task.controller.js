@@ -43,6 +43,22 @@ exports.findAll = function(req, res) {
   });
 };
 
+exports.signOut = function(req, res) {
+  req.session.userName = null
+  let query = { createdBy: req.session.userName };
+  Task.find(query, function(err, tasks) {
+    if (err) {
+      res
+        .status(500)
+        .send({ message: "Some error occurred while retrieving tasks." });
+    } else {
+      res.json(tasks);
+      console.log(req.session.userName);
+    }
+  });
+
+};
+
 exports.findOne = function(req, res) {
   let query = { title: req.body.content };
   Task.findOne(query, function(err, task) {

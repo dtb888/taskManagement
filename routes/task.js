@@ -3,6 +3,8 @@ module.exports = function (app) {
  
   // Google-login
   app.post('/tokensignin', task.createToken)
+  // Google-signout
+  app.get('/signout', task.signOut)
   // Add Task - Create a new Task
   app.post('/create', task.create)
   // Retrieve all Tasks

@@ -9,7 +9,7 @@ export default class AllTasks extends Component {
   }
 
   componentDidMount(){
-    axios.get('/task')
+    axios.get('/signout')
       .then(response => {
         this.setState({ tasks: response.data });
       })
@@ -38,7 +38,7 @@ export default class AllTasks extends Component {
               </tr>
             </thead>
 
-            <tbody id="table">
+            <tbody>
               {this.tabRow()}
             </tbody>
           </table>

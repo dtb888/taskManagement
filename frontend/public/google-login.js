@@ -14,7 +14,7 @@ function onSignIn(googleUser) {
 
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'http://localhost:3000/tokensignin');
+	xhr.open('POST', '/tokensignin');
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.onload = function() {
 		console.log('Signed in as: ' + xhr.responseText);
@@ -29,5 +29,6 @@ function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
 	console.log('User signed out.');
-	}).then(window.location.reload());
+	})
+	document.getElementById("givenName").innerHTML = null
 }
