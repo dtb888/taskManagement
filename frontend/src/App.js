@@ -31,8 +31,6 @@ class App extends Component {
             data-onsuccess="onSignIn"
             data-theme="dark"
           >
-          <Link to="/">
-          </Link>
           </div>
           <Link to="/signout" id="signOut">Sign Out</Link>
           <br/>
